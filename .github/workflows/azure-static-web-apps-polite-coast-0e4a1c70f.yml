@@ -13,6 +13,11 @@ jobs:
   build_and_deploy_job:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_VISION_KEY: ${{ secrets.REACT_APP_VISION_KEY }}
+      REACT_APP_VISION_ENDPOINT: ${{ secrets.REACT_APP_VISION_ENDPOINT }}
+      REACT_APP_OPENAI_API_KEY: ${{ secrets.REACT_APP_OPENAI_API_KEY }}
+
     name: Build and Deploy Job
     steps:
       - uses: actions/checkout@v3
@@ -32,11 +37,6 @@ jobs:
           api_location: "api" # Api source code path - optional
           output_location: "build" # Built app content directory - optional          
           ###### End of Repository/Build Configurations ######
-      - name: get secrets
-        run: |
-          echo ${{ secrets.REACT_APP_VISION_KEY }}
-          echo ${{ secrets.REACT_APP_VISION_ENDPOINT }}
-          echo ${{ secrets.REACT_APP_OPENAI_API_KEY }}
 
 
 
