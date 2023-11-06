@@ -1,7 +1,7 @@
 import { OpenAI } from "openai";
 
 
-const openai = new OpenAI({ apiKey: process.env.REACT_APP_OPEN_IA_KEY, dangerouslyAllowBrowser: true });
+const openai = new OpenAI({ apiKey: process.env.REACT_APP_OPENAI_API_KEY, dangerouslyAllowBrowser: true });
 
 async function generateImage(text_prompt) {
     const response = await openai.images.generate({
