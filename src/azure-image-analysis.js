@@ -1,6 +1,15 @@
 const VISION_KEY = process.env.REACT_APP_VISION_KEY;
 const VISION_ENDPOINT = process.env.REACT_APP_VISION_ENDPOINT;
 
+export function isConfiguredAnalisis() {
+    if (process.env.REACT_APP_VISION_KEY && process.env.REACT_APP_VISION_ENDPOINT) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+
 async function analyzeImageUrl(UrlImage) {
 
     const body = {
