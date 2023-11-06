@@ -1,10 +1,7 @@
-import React from "react"
+const VISION_KEY = process.env.REACT_APP_VISION_KEY;
+const VISION_ENDPOINT = process.env.REACT_APP_VISION_ENDPOINT;
 
-
-const VISION_KEY = process.env.VISION_KEY;
-const VISION_ENDPOINT = process.env.VISION_ENDPOINT;
-
-function analyzeImageUrl(UrlImage) {
+async function analyzeImageUrl(UrlImage) {
 
     const body = {
         url: UrlImage
@@ -22,10 +19,11 @@ function analyzeImageUrl(UrlImage) {
     return fetch(VISION_ENDPOINT + 'computervision/imageanalysis:analyze?features=caption,read&model-version=latest&language=en&api-version=2023-02-01-preview', requestOptions)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            return data
+
+            return data;
         })
         .catch(err => {
+
             console.log(err)
             return err
         })
